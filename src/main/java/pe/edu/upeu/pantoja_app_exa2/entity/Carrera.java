@@ -1,0 +1,27 @@
+package pe.edu.upeu.pantoja_app_exa2.entity;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Table(name="TBL_CARRERAS")
+public class Carrera {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Long id;
+
+    @NotBlank(message = "El codigo no puede estar vacío")
+    @Column(name = "CODIGO")
+    private String codigo;
+
+    @NotBlank(message = "El nombre no puede estar vacío")
+    @Column(name = "NOMBRE")
+    private String nombre;
+}
