@@ -22,6 +22,6 @@ public class Carrera {
     private String codigo;
 
     @NotBlank(message = "El nombre no puede estar vacío")
-    @Column(name = "NOMBRE")
+    @Column(name = "NOMBRE", nullable = false)
     private String nombre;
 }

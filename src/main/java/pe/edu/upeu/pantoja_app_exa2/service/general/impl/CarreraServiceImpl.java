@@ -14,14 +14,11 @@ import pe.edu.upeu.pantoja_app_exa2.service.general.service.CarreraService;
 import java.util.List;
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class CarreraServiceImpl implements CarreraService {
     private final CarreraRepository carreraRepository;
     private final CarreraMapper carreraMapper;
 
-    public CarreraServiceImpl(CarreraRepository carreraRepository, CarreraMapper carreraMapper) {
-        this.carreraRepository = carreraRepository;
-        this.carreraMapper = carreraMapper;
-    }
 
     @Override
     public CarreraDTO create(CarreraDTO carreraDTO) throws ServiceException {
@@ -55,7 +52,6 @@ public class CarreraServiceImpl implements CarreraService {
             carrera.setNombre(carreraDTO.getNombre());
             Carrera carreraActualizada = carreraRepository.save(carrera);
             return carreraMapper.toDTO(carreraActualizada);
-
         } catch (ResourceNotFoundException e) {
             throw e;
         } catch (Exception e) {
@@ -85,6 +81,7 @@ public class CarreraServiceImpl implements CarreraService {
             List<Carrera> carrera = carreraRepository.findAll();
             return carreraMapper.toDTOList(carrera);
         } catch (Exception e) {
+            log.error("Error al listar todas los tipoProveedor", e);
             throw new ServiceException("Error al listar todas las carreras", e);
         }
     }

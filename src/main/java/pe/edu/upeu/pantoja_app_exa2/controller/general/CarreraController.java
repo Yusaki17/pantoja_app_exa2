@@ -1,5 +1,6 @@
 package pe.edu.upeu.pantoja_app_exa2.controller.general;
 
+import lombok.RequiredArgsConstructor;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,17 +9,12 @@ import pe.edu.upeu.pantoja_app_exa2.dto.CarreraDTO;
 import pe.edu.upeu.pantoja_app_exa2.service.general.service.CarreraService;
 
 import java.util.List;
-
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/carrera")
 @CrossOrigin(origins = "http://localhost:4200")
 public class CarreraController {
     private final CarreraService carreraService;
-
-    public CarreraController(CarreraService carreraService) {
-        this.carreraService = carreraService;
-    }
-
     @GetMapping
     public ResponseEntity<List<CarreraDTO>> listAll() throws ServiceException {
         return ResponseEntity.ok(carreraService.listAll());

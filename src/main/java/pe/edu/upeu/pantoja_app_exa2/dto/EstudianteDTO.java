@@ -13,5 +13,6 @@ public class EstudianteDTO {
     private String nombre;
     private String apellido;
     private Date fechaNacimiento;
-    private Long carrera;
+    private Long carreraId;
+    private String carreraNombre;
 }

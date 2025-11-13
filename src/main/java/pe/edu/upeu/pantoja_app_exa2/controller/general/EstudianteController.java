@@ -1,5 +1,6 @@
 package pe.edu.upeu.pantoja_app_exa2.controller.general;
 
+import lombok.RequiredArgsConstructor;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,15 +9,13 @@ import pe.edu.upeu.pantoja_app_exa2.dto.EstudianteDTO;
 import pe.edu.upeu.pantoja_app_exa2.service.general.service.EstudianteService;
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/estudiante")
 @CrossOrigin(origins = "http://localhost:4200")
 public class EstudianteController {
     private final EstudianteService estudianteService;
 
-    public EstudianteController(EstudianteService estudianteService) {
-        this.estudianteService = estudianteService;
-    }
 
     @GetMapping
     public ResponseEntity<List<EstudianteDTO>> listAll() throws ServiceException {
