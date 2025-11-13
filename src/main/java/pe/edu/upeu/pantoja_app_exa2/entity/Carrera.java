@@ -4,13 +4,15 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name="TBL_CARRERAS")
+@Table(name="TBL_CARRERA")
 public class Carrera {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -24,4 +26,7 @@ public class Carrera {
     @NotBlank(message = "El nombre no puede estar vacío")
     @Column(name = "NOMBRE", nullable = false)
     private String nombre;
+
+    @OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Estudiante> estudiantes;
 }
